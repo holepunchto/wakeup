@@ -1,0 +1,3 @@
+[submodule "vendor/libappling"]
+	path = vendor/libappling
+	url = ../../holepunchto/libappling.git
