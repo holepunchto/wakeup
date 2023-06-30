@@ -41,4 +41,3 @@ endif()
 if(APPLE)
   add_subdirectory(darwin)
 endif()
-
