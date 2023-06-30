@@ -44,7 +44,7 @@ endif()
 
 target_include_directories(
   wakeup
-  PRIVATE
+  PUBLIC
     $<TARGET_PROPERTY:appling,INTERFACE_INCLUDE_DIRECTORIES>
 )
 
