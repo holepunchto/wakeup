@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.25)
 
-project(wakeup C)
+project(
+  wakeup
+  VERSION 1.0
+  LANGUAGES C
+)
 
 if(APPLE)
   enable_language(OBJC)

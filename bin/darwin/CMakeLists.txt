@@ -1,10 +1,12 @@
+configure_file(Info.plist Info.plist)
+
 install(
   TARGETS wakeup_bin
   RUNTIME DESTINATION Wakeup.app/Contents/MacOS
 )
 
 install(
-  FILES Info.plist
+  FILES ${CMAKE_CURRENT_BINARY_DIR}/Info.plist
   DESTINATION Wakeup.app/Contents
 )
 
