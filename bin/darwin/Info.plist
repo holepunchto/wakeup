@@ -26,10 +26,11 @@
   <array>
     <dict>
       <key>CFBundleURLName</key>
-      <string>Pear links</string>
+      <string>to.holepunch.wakeup.link</string>
       <key>CFBundleURLSchemes</key>
       <array>
         <string>pear</string>
+        <string>punch</string>
       </array>
     </dict>
   </array>
