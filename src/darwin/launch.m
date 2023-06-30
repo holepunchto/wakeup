@@ -6,16 +6,14 @@
 int
 wakeup_launch (const wakeup_app_t *app, const char *url) {
   @autoreleasepool {
-    NSArray<NSString *> *arguments = @[ [NSString stringWithFormat:@"%s", url] ];
-
-    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%s", app->path]];
+    NSURL *path = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%s", app->path]];
 
     NSWorkspaceOpenConfiguration *configuration = [NSWorkspaceOpenConfiguration configuration];
 
-    configuration.arguments = arguments;
+    configuration.arguments = @[ [NSString stringWithFormat:@"%s", url] ];
 
     [[NSWorkspace sharedWorkspace]
-      openApplicationAtURL:url
+      openApplicationAtURL:path
              configuration:configuration
          completionHandler:nil];
   }
