@@ -1,4 +1,9 @@
-configure_file(Info.plist Info.plist)
+file(
+  GENERATE
+  OUTPUT Info.plist
+  INPUT Info.plist
+  TARGET wakeup_bin
+)
 
 install(
   TARGETS wakeup_bin

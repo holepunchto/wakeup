@@ -3,6 +3,7 @@ add_executable(wakeup_bin  $<TARGET_OBJECTS:wakeup>)
 set_target_properties(
   wakeup_bin
   PROPERTIES
+  VERSION ${PROJECT_VERSION}
   OUTPUT_NAME Wakeup
 )
 

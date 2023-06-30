@@ -9,7 +9,7 @@
   <key>CFBundleDisplayName</key>
   <string>Wakeup</string>
   <key>CFBundleExecutable</key>
-  <string>Wakeup</string>
+  <string>$<TARGET_PROPERTY:OUTPUT_NAME></string>
   <key>CFBundleIdentifier</key>
   <string>to.holepunch.wakeup</string>
   <key>CFBundleIconFile</key>
@@ -19,9 +19,9 @@
   <key>CFBundlePackageType</key>
   <string>APPL</string>
   <key>CFBundleVersion</key>
-  <string>${PROJECT_VERSION}</string>
+  <string>$<TARGET_PROPERTY:VERSION></string>
   <key>CFBundleShortVersionString</key>
-  <string>${PROJECT_VERSION}</string>
+  <string>$<TARGET_PROPERTY:VERSION></string>
   <key>CFBundleURLTypes</key>
   <array>
     <dict>
