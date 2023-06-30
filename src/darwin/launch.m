@@ -17,6 +17,8 @@ wakeup_launch (const wakeup_app_t *app, size_t argc, const char *argv[]) {
 
   configuration.arguments = arguments;
 
+  [arguments release];
+
   [[NSWorkspace sharedWorkspace]
     openApplicationAtURL:url
            configuration:configuration
