@@ -20,7 +20,6 @@ wakeup (const char *url) {
   int err;
 
   appling_link_t link;
-
   err = appling_parse(url, &link);
   if (err < 0) return err;
 
