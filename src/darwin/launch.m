@@ -1,15 +1,17 @@
 #import <AppKit/AppKit.h>
 #import <Foundation/Foundation.h>
 
+#import "../../include/wakeup.h"
+
 int
-wakeup_launch (const char *app, size_t argc, const char *argv[]) {
+wakeup_launch (const wakeup_app_t *app, size_t argc, const char *argv[]) {
   NSMutableArray<NSString *> *arguments = [[NSMutableArray alloc] initWithCapacity:argc];
 
   for (size_t i = 0; i < argc; i++) {
     arguments[i] = [NSString stringWithFormat:@"%s", argv[i]];
   }
 
-  NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%s", app]];
+  NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%s", app->path]];
 
   NSWorkspaceOpenConfiguration *configuration = [NSWorkspaceOpenConfiguration configuration];
 

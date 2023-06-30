@@ -19,7 +19,7 @@ int
 wakeup (const char *url);
 
 int
-wakeup_launch (const char *app, size_t argc, const char *argv[]);
+wakeup_launch (const wakeup_app_t *app, size_t argc, const char *argv[]);
 
 #ifdef __cplusplus
 }
