@@ -38,5 +38,7 @@
   <true/>
   <key>LSUIElement</key>
   <true/>
+  <key>NSHumanReadableCopyright</key>
+  <string>Copyright © 2023 Holepunch</string>
 </dict>
 </plist>
