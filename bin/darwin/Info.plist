@@ -4,6 +4,8 @@
 <dict>
   <key>CFBundleDevelopmentRegion</key>
   <string>en</string>
+  <key>CFBundleName</key>
+  <string>Wakeup</string>
   <key>CFBundleDisplayName</key>
   <string>Wakeup</string>
   <key>CFBundleExecutable</key>
@@ -14,8 +16,6 @@
   <string>icon.icns</string>
   <key>CFBundleInfoDictionaryVersion</key>
   <string>6.0</string>
-  <key>CFBundleName</key>
-  <string>Wakeup</string>
   <key>CFBundlePackageType</key>
   <string>APPL</string>
   <key>CFBundleVersion</key>
