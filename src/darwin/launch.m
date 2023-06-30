@@ -3,8 +3,6 @@
 
 int
 wakeup_launch (const char *app, size_t argc, const char *argv[]) {
-  NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
-
   NSMutableArray<NSString *> *arguments = [[NSMutableArray alloc] initWithCapacity:argc];
 
   for (size_t i = 0; i < argc; i++) {
@@ -17,7 +15,7 @@ wakeup_launch (const char *app, size_t argc, const char *argv[]) {
 
   configuration.arguments = arguments;
 
-  [workspace
+  [[NSWorkspace sharedWorkspace]
     openApplicationAtURL:url
            configuration:configuration
        completionHandler:nil];
