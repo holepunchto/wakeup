@@ -35,5 +35,5 @@ wakeup (const char *url) {
 
   if (app == NULL) return -1;
 
-  return wakeup_launch(app, 1, &url);
+  return wakeup_launch(app, url);
 }
