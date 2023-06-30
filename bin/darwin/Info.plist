@@ -9,7 +9,7 @@
   <key>CFBundleExecutable</key>
   <string>Wakeup</string>
   <key>CFBundleIdentifier</key>
-  <string>com.holepunch.Wakeup</string>
+  <string>com.holepunch.wakeup</string>
   <key>CFBundleIconFile</key>
   <string>icon.icns</string>
   <key>CFBundleInfoDictionaryVersion</key>
