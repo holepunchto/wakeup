@@ -9,7 +9,7 @@
   <key>CFBundleDisplayName</key>
   <string>Wakeup</string>
   <key>CFBundleExecutable</key>
-  <string>$<TARGET_PROPERTY:OUTPUT_NAME></string>
+  <string>$<TARGET_FILE_NAME:wakeup_bin></string>
   <key>CFBundleIdentifier</key>
   <string>to.holepunch.wakeup</string>
   <key>CFBundleIconFile</key>
