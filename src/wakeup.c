@@ -15,6 +15,8 @@ static uv_once_t wakeup_init_guard = UV_ONCE_INIT;
 
 static void
 on_paths (appling_paths_t *req, int status, const appling_app_t *apps, size_t apps_len) {
+  assert(status == 0);
+
   wakeup_apps = malloc(apps_len * sizeof(appling_app_t));
   wakeup_apps_len = apps_len;
 
