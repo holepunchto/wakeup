@@ -9,7 +9,7 @@ set_target_properties(
 
 if(APPLE)
   set_target_properties(
-    wakeup
+    wakeup_bin
     PROPERTIES
     OBJC_STANDARD 99
   )
