@@ -56,6 +56,14 @@ if(WIN32)
   )
 endif()
 
+if(LINUX)
+  target_sources(
+    wakeup
+    PRIVATE
+      src/linux/launch.c
+  )
+endif()
+
 target_include_directories(
   wakeup
   PUBLIC

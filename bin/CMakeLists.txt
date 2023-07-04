@@ -17,6 +17,14 @@ if(WIN32)
   )
 endif()
 
+if(LINUX)
+  set_target_properties(
+    wakeup_bin
+    PROPERTIES
+    OUTPUT_NAME wakeup
+  )
+endif()
+
 target_include_directories(
   wakeup_bin
   PRIVATE
@@ -41,6 +49,14 @@ if(WIN32)
   )
 endif()
 
+if(LINUX)
+  target_sources(
+    wakeup_bin
+    PRIVATE
+      linux/main.c
+  )
+endif()
+
 target_link_libraries(
   wakeup_bin
   PRIVATE
@@ -62,4 +78,8 @@ endif()
 
 if(WIN32)
   add_subdirectory(win32)
+endif()
+
+if(LINUX)
+  add_subdirectory(linux)
 endif()
