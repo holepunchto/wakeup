@@ -2,7 +2,6 @@ file(
   GENERATE
   OUTPUT main.rc
   INPUT main.rc
-  TARGET wakeup_bin
 )
 
 file(

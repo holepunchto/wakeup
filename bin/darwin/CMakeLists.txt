@@ -2,7 +2,6 @@ file(
   GENERATE
   OUTPUT Info.plist
   INPUT Info.plist
-  TARGET wakeup_bin
 )
 
 install(

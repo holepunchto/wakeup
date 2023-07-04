@@ -1,11 +1,5 @@
 add_executable(wakeup_bin $<TARGET_OBJECTS:wakeup>)
 
-set_target_properties(
-  wakeup_bin
-  PROPERTIES
-  VERSION ${PROJECT_VERSION}
-)
-
 if(APPLE)
   set_target_properties(
     wakeup_bin

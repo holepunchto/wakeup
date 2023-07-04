@@ -6,7 +6,7 @@ BEGIN
     BLOCK "080904E4"
     BEGIN
       VALUE "ProductName", "Wakeup"
-      VALUE "ProductVersion", "$<TARGET_PROPERTY:VERSION>"
+      VALUE "ProductVersion", "$<TARGET_PROPERTY:wakeup,VERSION>"
       VALUE "OriginalFilename", "$<TARGET_FILE_NAME:wakeup_bin>"
       VALUE "LegalCopyright", "Copyright (C) 2023 Holepunch"
     END

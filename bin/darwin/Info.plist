@@ -19,9 +19,9 @@
   <key>CFBundlePackageType</key>
   <string>APPL</string>
   <key>CFBundleVersion</key>
-  <string>$<TARGET_PROPERTY:VERSION></string>
+  <string>$<TARGET_PROPERTY:wakeup,VERSION></string>
   <key>CFBundleShortVersionString</key>
-  <string>$<TARGET_PROPERTY:VERSION></string>
+  <string>$<TARGET_PROPERTY:wakeup,VERSION></string>
   <key>CFBundleURLTypes</key>
   <array>
     <dict>

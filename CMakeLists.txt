@@ -19,6 +19,7 @@ add_library(wakeup OBJECT)
 set_target_properties(
   wakeup
   PROPERTIES
+  VERSION ${PROJECT_VERSION}
   POSITION_INDEPENDENT_CODE ON
 )
 
