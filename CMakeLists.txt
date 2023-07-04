@@ -47,6 +47,14 @@ if(APPLE)
   )
 endif()
 
+if(WIN32)
+  target_sources(
+    wakeup
+    PRIVATE
+      src/win32/launch.c
+  )
+endif()
+
 target_include_directories(
   wakeup
   PUBLIC

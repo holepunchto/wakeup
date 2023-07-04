@@ -24,7 +24,7 @@ on_paths (appling_paths_t *req, int status, const appling_app_t *apps, size_t ap
 }
 
 static void
-on_wakeup_init () {
+on_wakeup_init (void) {
   int err;
 
   uv_loop_t loop;

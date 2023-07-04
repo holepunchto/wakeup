@@ -1,0 +1,19 @@
+IDI_ICON1 ICON DISCARDABLE "resources/icon.ico"
+1 VERSIONINFO
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "080904E4"
+    BEGIN
+      VALUE "ProductName", "Wakeup"
+      VALUE "ProductVersion", "$<TARGET_PROPERTY:wakeup_bin,VERSION>"
+      VALUE "OriginalFilename", "$<TARGET_FILE_NAME:wakeup_bin>"
+      VALUE "LegalCopyright", "Copyright (C) 2023 Holepunch"
+    END
+  END
+
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x809, 1252
+  END
+END
