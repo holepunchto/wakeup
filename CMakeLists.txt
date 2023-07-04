@@ -35,6 +35,7 @@ target_sources(
   INTERFACE
     include/wakeup.h
   PRIVATE
+    src/platform.h
     src/wakeup.c
 )
 

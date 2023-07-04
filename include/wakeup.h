@@ -5,21 +5,8 @@
 extern "C" {
 #endif
 
-#include <appling.h>
-#include <stddef.h>
-
-typedef struct wakeup_app_s wakeup_app_t;
-
-struct wakeup_app_s {
-  appling_key_t key;
-  const char *path;
-};
-
 int
 wakeup (const char *url);
-
-int
-wakeup_launch (const wakeup_app_t *app, const char *url);
 
 #ifdef __cplusplus
 }
