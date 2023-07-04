@@ -4,7 +4,6 @@ set_target_properties(
   wakeup_bin
   PROPERTIES
   VERSION ${PROJECT_VERSION}
-  OUTPUT_NAME Wakeup
 )
 
 if(APPLE)
@@ -12,6 +11,7 @@ if(APPLE)
     wakeup_bin
     PROPERTIES
     OBJC_STANDARD 99
+    OUTPUT_NAME Wakeup
   )
 endif()
 
