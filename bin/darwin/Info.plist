@@ -5,9 +5,9 @@
   <key>CFBundleDevelopmentRegion</key>
   <string>en</string>
   <key>CFBundleName</key>
-  <string>Wakeup</string>
+  <string>Pear</string>
   <key>CFBundleDisplayName</key>
-  <string>Wakeup</string>
+  <string>Pear</string>
   <key>CFBundleExecutable</key>
   <string>$<TARGET_FILE_NAME:wakeup_bin></string>
   <key>CFBundleIdentifier</key>

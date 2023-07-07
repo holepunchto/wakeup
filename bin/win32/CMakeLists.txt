@@ -17,5 +17,5 @@ target_sources(
 
 install(
   TARGETS wakeup_bin
-  RUNTIME DESTINATION Wakeup
+  RUNTIME DESTINATION Pear
 )

@@ -5,7 +5,7 @@ if(APPLE)
     wakeup_bin
     PROPERTIES
     OBJC_STANDARD 99
-    OUTPUT_NAME Wakeup
+    OUTPUT_NAME Pear
   )
 endif()
 
@@ -13,7 +13,7 @@ if(WIN32)
   set_target_properties(
     wakeup_bin
     PROPERTIES
-    OUTPUT_NAME Wakeup
+    OUTPUT_NAME Pear
   )
 endif()
 
@@ -21,7 +21,7 @@ if(LINUX)
   set_target_properties(
     wakeup_bin
     PROPERTIES
-    OUTPUT_NAME wakeup
+    OUTPUT_NAME pear
   )
 endif()
 
