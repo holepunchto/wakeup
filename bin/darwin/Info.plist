@@ -38,6 +38,8 @@
   <true/>
   <key>LSUIElement</key>
   <true/>
+  <key>LSMinimumSystemVersion</key>
+  <string>10.15</string>
   <key>NSHumanReadableCopyright</key>
   <string>Copyright © 2023 Holepunch</string>
 </dict>
