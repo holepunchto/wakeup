@@ -9,6 +9,13 @@ file(
   DESTINATION resources
 )
 
+target_link_options(
+  wakeup_bin
+  PRIVATE
+    /subsystem:windows
+    /entry:mainCRTStartup
+)
+
 target_sources(
   wakeup_bin
   PRIVATE
