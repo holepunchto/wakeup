@@ -55,7 +55,7 @@ wakeup (const char *url) {
   const appling_app_t *app = NULL;
 
   for (size_t i = 0; i < wakeup_apps_len; i++) {
-    if (memcmp(wakeup_apps[i].key, link.key, sizeof(appling_key_t)) == 0) {
+    if (strcmp(wakeup_apps[i].key, link.key) == 0) {
       app = &wakeup_apps[i];
       break;
     }
