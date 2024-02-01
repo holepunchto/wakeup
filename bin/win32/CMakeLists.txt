@@ -12,8 +12,7 @@ file(
 target_link_options(
   wakeup_bin
   PRIVATE
-    /subsystem:windows
-    /entry:mainCRTStartup
+    $<$<CONFIG:Release>:/subsystem:windows /entry:mainCRTStartup>
 )
 
 target_sources(
