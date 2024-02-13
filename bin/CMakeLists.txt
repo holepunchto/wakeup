@@ -1,15 +1,4 @@
-add_executable(
-  wakeup_bin
-
-  $<TARGET_OBJECTS:wakeup>
-  $<TARGET_OBJECTS:uv>
-  $<TARGET_OBJECTS:fs>
-  $<TARGET_OBJECTS:hex>
-  $<TARGET_OBJECTS:path>
-  $<TARGET_OBJECTS:log>
-  $<TARGET_OBJECTS:appling>
-  $<TARGET_OBJECTS:compact>
-)
+add_executable(wakeup_bin)
 
 if(APPLE)
   set_target_properties(
@@ -42,12 +31,6 @@ target_include_directories(
     $<TARGET_PROPERTY:wakeup,INTERFACE_INCLUDE_DIRECTORIES>
 )
 
-target_link_libraries(
-  wakeup_bin
-  PRIVATE
-    $<TARGET_PROPERTY:uv,INTERFACE_LINK_LIBRARIES>
-)
-
 if(APPLE)
   target_sources(
     wakeup_bin
@@ -73,6 +56,19 @@ if(LINUX)
       linux/main.c
   )
 endif()
+
+target_link_libraries(
+  wakeup_bin
+  PRIVATE
+    uv_a
+    fs
+    hex
+    path
+    log
+    appling
+    compact
+    wakeup
+)
 
 if(APPLE)
   target_link_libraries(
