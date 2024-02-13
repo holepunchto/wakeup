@@ -1,4 +1,15 @@
-add_executable(wakeup_bin $<TARGET_OBJECTS:wakeup>)
+add_executable(
+  wakeup_bin
+
+  $<TARGET_OBJECTS:wakeup>
+  $<TARGET_OBJECTS:uv>
+  $<TARGET_OBJECTS:fs>
+  $<TARGET_OBJECTS:hex>
+  $<TARGET_OBJECTS:path>
+  $<TARGET_OBJECTS:log>
+  $<TARGET_OBJECTS:appling>
+  $<TARGET_OBJECTS:compact>
+)
 
 if(APPLE)
   set_target_properties(
@@ -56,18 +67,6 @@ if(LINUX)
       linux/main.c
   )
 endif()
-
-target_link_libraries(
-  wakeup_bin
-  PRIVATE
-    uv_a
-    fs
-    hex
-    path
-    log
-    appling
-    compact
-)
 
 if(APPLE)
   target_link_libraries(
