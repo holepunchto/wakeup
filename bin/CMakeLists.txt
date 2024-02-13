@@ -60,8 +60,13 @@ endif()
 target_link_libraries(
   wakeup_bin
   PRIVATE
-    appling_static
-    compact_static
+    uv_a
+    fs
+    hex
+    path
+    log
+    appling
+    compact
 )
 
 if(APPLE)
