@@ -24,7 +24,7 @@ if(WIN32)
   set_target_properties(
     wakeup_bin
     PROPERTIES
-    OUTPUT_NAME Pear
+    OUTPUT_NAME pear
   )
 endif()
 
