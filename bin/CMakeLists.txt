@@ -42,6 +42,12 @@ target_include_directories(
     $<TARGET_PROPERTY:wakeup,INTERFACE_INCLUDE_DIRECTORIES>
 )
 
+target_link_libraries(
+  wakeup_bin
+  PRIVATE
+    $<TARGET_PROPERTY:uv,INTERFACE_LINK_LIBRARIES>
+)
+
 if(APPLE)
   target_sources(
     wakeup_bin
