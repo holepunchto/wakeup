@@ -7,8 +7,10 @@
 #import "../platform.h"
 
 int
-wakeup_launch (const appling_app_t *app, const char *url) {
+wakeup_launch (const appling_app_t *app, const char *url, void *data) {
   @autoreleasepool {
+    NSAppleEventDescriptor *event = CFBridgingRelease(data);
+
     NSURL *path = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%s", app->path]];
 
     NSMutableArray<NSString *> *components = [NSMutableArray arrayWithArray:path.pathComponents];
@@ -28,6 +30,8 @@ wakeup_launch (const appling_app_t *app, const char *url) {
     NSWorkspaceOpenConfiguration *configuration = [NSWorkspaceOpenConfiguration configuration];
 
     configuration.arguments = @[ [NSString stringWithFormat:@"%s", url] ];
+
+    if (event) configuration.appleEvent = event;
 
     [[NSWorkspace sharedWorkspace]
       openApplicationAtURL:path

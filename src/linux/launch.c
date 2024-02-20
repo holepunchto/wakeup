@@ -6,7 +6,7 @@
 #include "../platform.h"
 
 int
-wakeup_launch (const appling_app_t *app, const char *url) {
+wakeup_launch (const appling_app_t *app, const char *url, void *data) {
   pid_t pid = fork();
 
   if (pid < 0) return -1;

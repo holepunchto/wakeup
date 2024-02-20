@@ -43,7 +43,7 @@ on_wakeup_init (void) {
 }
 
 int
-wakeup (const char *url) {
+wakeup (const char *url, void *data) {
   uv_once(&wakeup_init_guard, on_wakeup_init);
 
   int err;
@@ -63,5 +63,5 @@ wakeup (const char *url) {
 
   if (app == NULL) return -1;
 
-  return wakeup_launch(app, url);
+  return wakeup_launch(app, url, data);
 }

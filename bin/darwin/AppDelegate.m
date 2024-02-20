@@ -25,7 +25,7 @@
         withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
   NSString *url = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
 
-  wakeup([url UTF8String]);
+  wakeup([url UTF8String], (void *) CFBridgingRetain(event));
 
   [self resetTimer];
 }

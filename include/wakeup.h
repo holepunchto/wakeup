@@ -6,7 +6,7 @@ extern "C" {
 #endif
 
 int
-wakeup (const char *url);
+wakeup (const char *url, void *data);
 
 #ifdef __cplusplus
 }
