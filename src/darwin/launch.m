@@ -33,10 +33,24 @@ wakeup_launch (const appling_app_t *app, const char *url, void *data) {
 
     if (event) configuration.appleEvent = event;
 
+    __block NSError *error = Nil;
+
+    dispatch_semaphore_t sem = dispatch_semaphore_create(0);
+
     [[NSWorkspace sharedWorkspace]
       openApplicationAtURL:path
              configuration:configuration
-         completionHandler:nil];
+         completionHandler:^(NSRunningApplication *app, NSError *err) {
+           error = err;
+
+           dispatch_semaphore_signal(sem);
+         }];
+
+    dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);
+
+    dispatch_release(sem);
+
+    if (error) return -1;
   }
 
   return 0;
