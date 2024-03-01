@@ -1,38 +1,101 @@
 #include <appling.h>
 #include <assert.h>
+#include <path.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
 #include <uv.h>
 
 #include "../include/wakeup.h"
-#include "platform.h"
 
-static appling_app_t *wakeup_apps = NULL;
-static size_t wakeup_apps_len = 0;
+typedef struct {
+  char *url;
+  appling_platform_t platform;
 
-static uv_once_t wakeup_init_guard = UV_ONCE_INIT;
+  struct {
+    uv_process_t process;
+    appling_resolve_t resolve;
+    appling_lock_t lock;
+  } handles;
+} wakeup_t;
 
 static void
-on_paths (appling_paths_t *req, int status, const appling_app_t *apps, size_t apps_len) {
-  assert(status == 0);
-
-  wakeup_apps = malloc(apps_len * sizeof(appling_app_t));
-  wakeup_apps_len = apps_len;
-
-  memcpy(wakeup_apps, apps, apps_len * sizeof(appling_app_t));
+on_process_exit (uv_process_t *handle, int64_t exit_status, int term_signal) {
+  uv_close((uv_handle_t *) handle, NULL);
 }
 
 static void
-on_wakeup_init (void) {
+on_unlock (appling_lock_t *req, int status) {
+  assert(status == 0);
+}
+
+static void
+on_resolve (appling_resolve_t *req, int status) {
+  int err;
+
+  assert(status == 0);
+
+  wakeup_t *wakeup = (wakeup_t *) req->data;
+
+  appling_path_t pear;
+  size_t path_len = sizeof(appling_path_t);
+
+  err = path_join(
+    (const char *[]){req->platform->path, "bin", "pear-runtime", NULL},
+    pear,
+    &path_len,
+    path_behavior_system
+  );
+  assert(err == 0);
+
+  err = appling_unlock(req->loop, &wakeup->handles.lock, on_unlock);
+  assert(err == 0);
+
+  char *args[] = {pear, "run", "--detached", wakeup->url, NULL};
+
+  uv_process_options_t options = {
+    .exit_cb = on_process_exit,
+    .file = pear,
+    .args = args,
+    .flags = UV_PROCESS_WINDOWS_HIDE,
+    .stdio_count = 3,
+    .stdio = (uv_stdio_container_t[]){
+      {.flags = UV_INHERIT_FD, .data.fd = 0},
+      {.flags = UV_INHERIT_FD, .data.fd = 1},
+      {.flags = UV_INHERIT_FD, .data.fd = 2},
+    },
+  };
+
+  err = uv_spawn(req->loop, &wakeup->handles.process, &options);
+  assert(err == 0);
+}
+
+static void
+on_lock (appling_lock_t *req, int status) {
+  int err;
+
+  assert(status == 0);
+
+  wakeup_t *wakeup = (wakeup_t *) req->data;
+
+  err = appling_resolve(req->loop, &wakeup->handles.resolve, NULL, &wakeup->platform, on_resolve);
+  assert(err == 0);
+}
+
+int
+wakeup (const char *url) {
   int err;
 
   uv_loop_t loop;
   err = uv_loop_init(&loop);
   assert(err == 0);
 
-  appling_paths_t req;
-  err = appling_paths(&loop, &req, NULL, on_paths);
+  wakeup_t wakeup = {.url = strdup(url)};
+
+  wakeup.handles.resolve.data = (void *) &wakeup;
+  wakeup.handles.lock.data = (void *) &wakeup;
+
+  err = appling_lock(&loop, &wakeup.handles.lock, NULL, on_lock);
   assert(err == 0);
 
   err = uv_run(&loop, UV_RUN_DEFAULT);
@@ -40,28 +103,8 @@ on_wakeup_init (void) {
 
   err = uv_loop_close(&loop);
   assert(err == 0);
-}
 
-int
-wakeup (const char *url) {
-  uv_once(&wakeup_init_guard, on_wakeup_init);
+  free(wakeup.url);
 
-  int err;
-
-  appling_link_t link;
-  err = appling_parse(url, &link);
-  if (err < 0) return err;
-
-  const appling_app_t *app = NULL;
-
-  for (size_t i = 0; i < wakeup_apps_len; i++) {
-    if (strcmp(wakeup_apps[i].key, link.key) == 0) {
-      app = &wakeup_apps[i];
-      break;
-    }
-  }
-
-  if (app == NULL) return -1;
-
-  return wakeup_launch(app, url);
+  return 0;
 }
