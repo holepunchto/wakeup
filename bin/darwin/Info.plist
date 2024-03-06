@@ -30,7 +30,6 @@
       <key>CFBundleURLSchemes</key>
       <array>
         <string>pear</string>
-        <string>punch</string>
       </array>
     </dict>
   </array>
