@@ -10,6 +10,10 @@ if(APPLE)
   enable_language(OBJC)
 endif()
 
+if(MSVC)
+  add_compile_options(/MT$<$<CONFIG:Debug>:d>)
+endif()
+
 if(NOT TARGET appling)
   add_subdirectory(vendor/libappling EXCLUDE_FROM_ALL)
 endif()
