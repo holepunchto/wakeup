@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.25)
 
 project(
   wakeup
-  VERSION 1.1
+  VERSION 1.2
   LANGUAGES C
 )
 
@@ -14,9 +14,7 @@ if(MSVC)
   add_compile_options(/MT$<$<CONFIG:Debug>:d>)
 endif()
 
-if(NOT TARGET appling)
-  add_subdirectory(vendor/libappling EXCLUDE_FROM_ALL)
-endif()
+add_subdirectory(vendor/libappling EXCLUDE_FROM_ALL)
 
 add_library(wakeup OBJECT)
 

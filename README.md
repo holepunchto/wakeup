@@ -10,16 +10,10 @@ To build Wakeup, start by configuring the build tree:
 cmake -B build
 ```
 
-Next, perform a build:
+Then, perform a build:
 
 ```sh
 cmake --build build
-```
-
-Finally, install the application bundle somewhere:
-
-```sh
-cmake --install build --prefix <path>
 ```
 
 `<path>` should be chosen based on your system, such as `/Applications` on macOS or `C:\Program Files` on Windows. The `install/` directory in the root of the repository may also be used.
