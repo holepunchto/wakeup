@@ -13,7 +13,7 @@
   <key>CFBundleIdentifier</key>
   <string>to.holepunch.wakeup</string>
   <key>CFBundleIconFile</key>
-  <string>icon.icns</string>
+  <string>icon</string>
   <key>CFBundleInfoDictionaryVersion</key>
   <string>6.0</string>
   <key>CFBundlePackageType</key>
