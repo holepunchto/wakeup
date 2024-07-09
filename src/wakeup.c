@@ -20,17 +20,17 @@ typedef struct {
 } wakeup_t;
 
 static void
-on_process_exit (uv_process_t *handle, int64_t exit_status, int term_signal) {
+wakeup__on_exit (uv_process_t *handle, int64_t exit_status, int term_signal) {
   uv_close((uv_handle_t *) handle, NULL);
 }
 
 static void
-on_unlock (appling_lock_t *req, int status) {
+wakeup__on_unlock (appling_lock_t *req, int status) {
   assert(status == 0);
 }
 
 static void
-on_resolve (appling_resolve_t *req, int status) {
+wakeup__on_resolve (appling_resolve_t *req, int status) {
   int err;
 
   assert(status == 0);
@@ -48,13 +48,13 @@ on_resolve (appling_resolve_t *req, int status) {
   );
   assert(err == 0);
 
-  err = appling_unlock(req->loop, &wakeup->handles.lock, on_unlock);
+  err = appling_unlock(req->loop, &wakeup->handles.lock, wakeup__on_unlock);
   assert(err == 0);
 
   char *args[] = {pear, "run", "--detached", wakeup->url, NULL};
 
   uv_process_options_t options = {
-    .exit_cb = on_process_exit,
+    .exit_cb = wakeup__on_exit,
     .file = pear,
     .args = args,
     .flags = UV_PROCESS_WINDOWS_HIDE,
@@ -71,14 +71,14 @@ on_resolve (appling_resolve_t *req, int status) {
 }
 
 static void
-on_lock (appling_lock_t *req, int status) {
+wakeup__on_lock (appling_lock_t *req, int status) {
   int err;
 
   assert(status == 0);
 
   wakeup_t *wakeup = (wakeup_t *) req->data;
 
-  err = appling_resolve(req->loop, &wakeup->handles.resolve, NULL, &wakeup->platform, on_resolve);
+  err = appling_resolve(req->loop, &wakeup->handles.resolve, NULL, &wakeup->platform, 0, wakeup__on_resolve);
   assert(err == 0);
 }
 
@@ -95,7 +95,7 @@ wakeup (const char *url) {
   wakeup.handles.resolve.data = (void *) &wakeup;
   wakeup.handles.lock.data = (void *) &wakeup;
 
-  err = appling_lock(&loop, &wakeup.handles.lock, NULL, on_lock);
+  err = appling_lock(&loop, &wakeup.handles.lock, NULL, wakeup__on_lock);
   assert(err == 0);
 
   err = uv_run(&loop, UV_RUN_DEFAULT);
