@@ -6,11 +6,17 @@ file(
   INPUT Info.plist
 )
 
+add_macos_iconset(
+  wakeup_icon
+  ICONS
+    resources/icon.png 512 2x
+)
+
 add_macos_bundle(
   wakeup_bundle
   DESTINATION Pear.app
-  ICON resources/icon.png
   TARGET wakeup_bin
+  DEPENDS wakeup_icon
 )
 
 code_sign_macos(
