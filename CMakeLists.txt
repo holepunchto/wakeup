@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.25)
 
+find_package(cmake-fetch REQUIRED PATHS node_modules/cmake-fetch)
+find_package(cmake-macos REQUIRED PATHS node_modules/cmake-macos)
+find_package(cmake-windows REQUIRED PATHS node_modules/cmake-windows)
+
 project(
   wakeup
   VERSION 1.2
@@ -14,7 +18,7 @@ if(MSVC)
   add_compile_options(/MT$<$<CONFIG:Debug>:d>)
 endif()
 
-add_subdirectory(vendor/libappling EXCLUDE_FROM_ALL)
+fetch_package("github:holepunchto/libappling")
 
 add_library(wakeup OBJECT)
 

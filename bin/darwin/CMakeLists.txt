@@ -1,5 +1,3 @@
-include(macos)
-
 file(
   GENERATE
   OUTPUT Info.plist

@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "name": "wakeup",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holepunchto/wakeup.git"
+  },
+  "author": "Holepunch",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/holepunchto/wakeup/issues"
+  },
+  "homepage": "https://github.com/holepunchto/wakeup#readme",
+  "devDependencies": {
+    "cmake-fetch": "^1.1.0",
+    "cmake-macos": "^1.0.0",
+    "cmake-windows": "^1.0.0"
+  }
+}

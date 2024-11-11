@@ -1,5 +1,3 @@
-include(windows)
-
 file(
   GENERATE
   OUTPUT main.rc
